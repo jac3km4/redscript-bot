@@ -1,0 +1,57 @@
+[package]
+name = "redscript-bot"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+[dependencies]
+anyhow = "1"
+serde = { version = "1.0", features = ["derive"] }
+envy = "0.4"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+serenity = "0.12"
+
+[dependencies.redscript]
+git = "https://github.com/jac3km4/redscript"
+rev = "c96c139"
+features = ["arc"]
+
+[dependencies.redscript-compiler]
+git = "https://github.com/jac3km4/redscript"
+rev = "c96c139"
+
+[dependencies.redscript-vm]
+git = "https://github.com/jac3km4/redscript-vm"
+rev = "bf53798"
+
+[lints.rust]
+warnings = "deny"
+future-incompatible = "deny"
+let-underscore = "deny"
+nonstandard-style = "deny"
+rust-2018-compatibility = "deny"
+rust-2018-idioms = "deny"
+rust-2021-compatibility = "deny"
+
+[lints.clippy]
+all = "deny"
+match_same_arms = "deny"
+semicolon_if_nothing_returned = "deny"
+single_match_else = "deny"
+redundant_closure_for_method_calls = "deny"
+cloned_instead_of_copied = "deny"
+redundant_else = "deny"
+unnested_or_patterns = "deny"
+unreadable_literal = "deny"
+type_repetition_in_bounds = "deny"
+equatable_if_let = "deny"
+implicit_clone = "deny"
+default_trait_access = "deny"
+explicit_deref_methods = "deny"
+explicit_iter_loop = "deny"
+inefficient_to_string = "deny"
+match_bool = "deny"
+
+[profile.release]
+strip = "symbols"
+lto = true
